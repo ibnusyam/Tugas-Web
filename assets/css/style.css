@@ -222,7 +222,7 @@ body {
 .has-scrollbar::-webkit-scrollbar-button { width: calc(25% - 40px); }
 
 .card-banner {
-  background: var(--cultured);
+  background: #ccFFFF;
   position: relative;
   height: 350px;
   overflow: hidden;
@@ -247,82 +247,58 @@ body {
   padding: 5px 15px;
   font-family: var(--ff-roboto);
   font-size: var(--fs-7);
-  border-radius: 25px;
-}
+  border-radius: 5px;
+} 
 
 .card-action-list {
   position: absolute;
-  top: 20px;
-  right: -20px;
-  opacity: 0;
+  top: 350px;
+  right: 95px;
+  opacity: 1;
   transition: var(--transition-1);
 }
 
 .product-card:is(:hover, :focus) .card-action-list {
-  right: 20px;
+  top : 300px;
   opacity: 1;
 }
 
 .card-action-item { position: relative; }
 
-.card-action-item:not(:last-child) { margin-bottom: 10px; }
 
 .card-action-btn {
   background: var(--white);
   color: var(--rich-black-fogra-29);
   font-size: 18px;
   padding: 10px;
-  border-radius: 50%;
+  background: #83B4FF;
+  color: white;
+  border-radius: 25px;
   transition: var(--transition-1);
 }
 
 .card-action-btn ion-icon { --ionicon-stroke-width: 30px; }
 
 .card-action-btn:is(:hover, :focus) {
-  background: var(--bittersweet);
+  background: #83B4FF;
   color: var(--white);
+  scale: 110%;
 }
 
-.card-action-tooltip {
-  position: absolute;
-  top: 50%;
-  right: calc(100% + 5px);
-  transform: translateY(-50%);
-  width: max-content;
-  background: var(--black_90);
-  color: var(--white);
-  font-family: var(--ff-roboto);
-  font-size: var(--fs-7);
-  padding: 4px 8px;
-  border-radius: 4px;
-  opacity: 0;
-  pointer-events: none;
-  transition: var(--transition-1);
-}
 
-.card-action-btn:is(:hover, :focus) + .card-action-tooltip { opacity: 1; }
+.card-action-btn:is(:hover, :focus) + .card-action-tooltip { opacity: 1; } */
 
 .card-content {
   padding: 24px 15px 0;
   text-align: center;
 }
 
-.card-cat {
-  font-family: var(--ff-roboto);
-  color: var(--onyx);
-  font-size: var(--fs-7);
-  margin-bottom: 12px;
+
+.product-card .card-title { 
+margin-bottom: 12px; 
+margin-top: 30px;
+text-align: center;
 }
-
-.card-cat-link {
-  display: inline-block;
-  color: inherit;
-  transition: var(--transition-1);
-}
-
-.card-cat-link:is(:hover, :focus) { color: var(--bittersweet); }
-
-.product-card .card-title { margin-bottom: 12px; }
 
 .product-card .card-title > a {
   color: inherit;
@@ -357,7 +333,74 @@ body {
 
 .btn-link:is(:hover, :focus) { border-color: transparent; }
 
+.popup {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  visibility: hidden;
+}
 
+.popup:target {
+  visibility: visible;
+}
+
+
+
+.popup-close:link,.popup-close:visited{
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 50px;
+  line-height: 1;
+  
+}
+
+.popup-content {
+  width: 50%;
+  background-color: #ccFFFF;
+  border: 1px solid;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-content .row {
+  display: flex;
+  width: 100%;
+}
+
+.popup-img {
+  width: 50%;
+}
+
+.info {
+  margin-left: 10px;
+  width: 50%;
+  font-family: poppins;
+}
+
+.info h1{
+  margin-top: 20px;
+  color: #464646;
+  font-size: 20px;
+}
+
+.info p{
+  margin-top: 10px;
+  color: #6b6b6b;
+  font-size: 17px;
+}
+
+.popup-img img{
+  width: 100%;
+  height: 100%;
+}
 
 
 
@@ -368,14 +411,15 @@ body {
 .header {
   background: var(--white);
   position: fixed;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
   transition: var(--transition-1);
   z-index: 4;
+  box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.1);
 }
 
-.header.active { box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.1); }
 
 .header .container {
   display: flex;
@@ -395,22 +439,12 @@ body {
 
 .nav-open-btn ion-icon { --ionicon-stroke-width: 40px; }
 
-.navbar {
-  background: var(--white);
-  position: fixed;
-  top: 0;
-  left: -280px;
-  width: 100%;
-  max-width: 270px;
-  height: 100%;
-  border-right: 3px solid var(--rich-black-fogra-29);
-  font-family: var(--ff-roboto);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  z-index: 2;
-  visibility: hidden;
-  transition: 0.25s var(--cubic-out);
+.logo {
+  color: black;
+  font-size: 30px;
+  flex: 1;
 }
+
 
 .navbar.active {
   visibility: visible;
@@ -440,7 +474,7 @@ body {
 .navbar .logo img { margin-inline: auto; }
 
 .navbar-list,
-.nav-action-list { margin: 30px; }
+.nav-action-list { margin: 50px; }
 
 .navbar-list {
   padding: 20px;
@@ -518,8 +552,7 @@ body {
 
 .hero {
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left;
+  background-position: right;
   min-height: 400px;
   display: flex;
   justify-content: flex-start;
@@ -1168,6 +1201,18 @@ a.footer-link:is(:hover, :focus) { color: var(--bittersweet); }
     flex-grow: 1;
   }
 
+.unibi{
+  margin-top: -10px;
+  display: flex;
+  align-items: center;
+}
+
+.unibi p {
+  align-items: center;
+  margin-top: 10px;
+  margin-left: -5px;
+}
+
   .navbar-list {
     margin-inline: auto;
     gap: 35px;
@@ -1275,6 +1320,60 @@ a.footer-link:is(:hover, :focus) { color: var(--bittersweet); }
   .container { max-width: 1280px; }
 
 
+  /* About Section */
+.about,
+.menu,
+.products,
+.contact {
+  padding: 8rem 7% 1.4rem;
+}
+
+.about-img {
+  display: flex;
+  justify-content: center;
+}
+
+.about h2,
+.menu h2,
+.products h2,
+.contact h2 {
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.about h2 span,
+.menu h2 span,
+.products h2 span,
+.contact h2 span {
+  color: var(--primary);
+}
+
+.about .row {
+  display: flex;
+}
+
+.about .row .about-img {
+  flex: 1 1 35rem;
+}
+
+.about .row .content {
+  flex: 1 1 35rem;
+  padding: 0 1rem;
+}
+
+.about .row .content h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about .row .content p {
+  margin-bottom: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
 
   /**
    * HERO
@@ -1285,7 +1384,7 @@ a.footer-link:is(:hover, :focus) { color: var(--bittersweet); }
   .hero .container { max-width: 1000px; }
 
   .hero-text {
-    font-size: var(--fs-6);
+    font-size: 18px;
     max-width: 50ch;
   }
 
